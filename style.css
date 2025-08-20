@@ -1,0 +1,13 @@
+.minus-button.red {
+    background-color: #ef4444;
+    color: white;
+}
+
+#product-list::-webkit-scrollbar {
+    display: none;
+}
+
+#product-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
