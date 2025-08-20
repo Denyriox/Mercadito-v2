@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let totalItems = 0;
             let totalBs = 0;
             let productCount = 0;
-            
+
             Object.keys(this.cart).forEach(id => {
                 const product = this.products.find(p => p.id == id);
                 if (product) {
@@ -138,16 +138,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.elements.cartItems.appendChild(cartItem);
                 }
             });
-            
+
             // Actualizar contador de productos distintos
             if (this.elements.cartProductCount) {
                 this.elements.cartProductCount.textContent = productCount;
             }
-            
+
             this.elements.cartTotalItems.textContent = totalItems;
             this.elements.cartTotalBs.textContent = totalBs.toFixed(2);
-            this.elements.cartTotalUsd.textContent = (totalBs / this.dolar).toFixed(2);
-            
+            const totalUsd = totalBs / this.dolar;
+            this.elements.cartTotalUsd.textContent = totalUsd.toFixed(2);
+
+            // Calcular vuelto/cambio
+            const cartChangeInfo = document.getElementById('cart-change-info');
+            if (cartChangeInfo) {
+                if (totalUsd > 0) {
+                    const usdUp = Math.ceil(totalUsd); // redondeo hacia arriba
+                    const usdDown = Math.floor(totalUsd); // redondeo hacia abajo
+                    const faltaUsd = +(usdUp - totalUsd).toFixed(2);
+                    const devolverUsd = +(totalUsd - usdDown).toFixed(2);
+                    const faltaBs = (faltaUsd * this.dolar).toFixed(2);
+                    const devolverBs = (devolverUsd * this.dolar).toFixed(2);
+                    cartChangeInfo.innerHTML =
+                        `<span><span style="color: red;">Vuelto:</span> <b>Bs. ${faltaBs}</b> si paga <b>${usdUp} USD</b></span>` +
+                        `<span><span style="color: green;">Completar:</span> <b>Bs. ${devolverBs}</b> si paga <b>${usdDown === 0 ? '' : usdDown + ' USD'}</b>${usdDown === 0 ? '' : ''}</span>`;
+                } else {
+                    cartChangeInfo.innerHTML = '';
+                }
+            }
+
             // Actualizar barra de previsualización
             if (this.elements.cartPreviewBar) {
                 this.elements.cartPreviewItems.textContent = `${totalItems} producto${totalItems === 1 ? '' : 's'}`;
