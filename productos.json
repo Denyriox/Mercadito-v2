@@ -1,5 +1,5 @@
 {
-  "dolar": 138.12,
+  "dolar": 139.40,
   "productos": [
     { "id": 1, "nombre": "Acido Borico", "gramos": 45, "precio": 85, "categoria": "General" },
     { "id": 2, "nombre": "A-C-P", "gramos": 45, "precio": 65, "categoria": "General" },
@@ -117,6 +117,9 @@
     { "id": 113, "nombre": "Valeriana", "gramos": 10, "precio": 55, "categoria": "General" },
     { "id": 114, "nombre": "Ajonjolí", "gramos": 45, "precio": 70, "categoria": "General" },
     { "id": 115, "nombre": "Leche Condensada. Flower", "gramos": 250, "precio": 250, "categoria": "General" },
-    { "id": 116, "nombre": "Mani Japonés Surtido", "gramos": 50, "precio": 70, "categoria": "General" }
+    { "id": 116, "nombre": "Mani Japonés Surtido", "gramos": 50, "precio": 70, "categoria": "General" },
+        { "id": 201, "nombre": "Casabe Mini Galleta", "gramos": 1, "precio": 280, "categoria": "General" },
+        { "id": 202, "nombre": "Casabe Galleta", "gramos": 1, "precio": 100, "categoria": "General" },
+        { "id": 203, "nombre": "Besito de Coco", "gramos": 1, "precio": 70, "categoria": "General" }
   ]
 }
