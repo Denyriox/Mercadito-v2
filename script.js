@@ -42,7 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         renderProducts(filter = '') {
             this.elements.productList.innerHTML = '';
-            const filteredProducts = this.products.filter(p => this.normalizeText(p.nombre).includes(this.normalizeText(filter)));
+            const filterWords = this.normalizeText(filter).split(' ').filter(Boolean);
+            const filteredProducts = this.products.filter(p => {
+                const nombreNorm = this.normalizeText(p.nombre);
+                return filterWords.every(word => nombreNorm.includes(word));
+            });
             filteredProducts.forEach(product => {
                 const productCard = this.createProductCard(product);
                 this.elements.productList.appendChild(productCard);
@@ -198,7 +202,13 @@ document.addEventListener('DOMContentLoaded', () => {
             this.updateCartView();
         },
         normalizeText(text) {
-            return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            return text
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[-]/g, ' ')
+                .replace(/\s+/g, ' ') // Opcional: normaliza espacios múltiples
+                .trim();
         }
     };
     app.init();

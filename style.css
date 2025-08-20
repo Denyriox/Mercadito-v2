@@ -135,9 +135,9 @@ header {
     transform: translateY(-2px) scale(1.02);
 }
 
-.minus-button, .plus-button {
-    background: #f3f4f6;
-    color: #374151;
+.plus-button {
+    background: #22c55e;
+    color: #fff;
     border: none;
     border-radius: 50%;
     width: 32px;
@@ -149,8 +149,26 @@ header {
     cursor: pointer;
     outline: none;
 }
-.minus-button:hover, .plus-button:hover {
-    background: #2563eb;
+.plus-button:hover {
+    background: #16a34a;
+    color: #fff;
+}
+.minus-button {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+    cursor: pointer;
+    outline: none;
+}
+.minus-button:hover {
+    background: #b91c1c;
     color: #fff;
 }
 .minus-button.red {

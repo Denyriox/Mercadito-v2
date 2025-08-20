@@ -19,14 +19,15 @@
     { "id": 16, "nombre": "Bicarbonato", "gramos": 50, "precio": 95, "categoria": "General" },
     { "id": 17, "nombre": "Bolero", "gramos": 50, "precio": 95, "categoria": "General" },
     { "id": 18, "nombre": "Cacao", "gramos": 45, "precio": 165, "categoria": "General" },
-    { "id": 19, "nombre": "Canela-Entera", "gramos": 20, "precio": 70, "categoria": "General" },
-    { "id": 20, "nombre": "Canela-Rama.", "gramos": 30, "precio": 90, "categoria": "General" },
+    { "id": 19, "nombre": "Canela-Rama.", "gramos": 20, "precio": 70, "categoria": "General" },
+    { "id": 20, "nombre": "Canela-Molida.", "gramos": 30, "precio": 90, "categoria": "General" },
     { "id": 21, "nombre": "Carmencita", "gramos": 50, "precio": 65, "categoria": "General" },
     { "id": 22, "nombre": "Cebolla-Granulado.", "gramos": 45, "precio": 80, "categoria": "General" },
     { "id": 23, "nombre": "Cebolla-Hojuela.", "gramos": 40, "precio": 80, "categoria": "General" },
     { "id": 24, "nombre": "Chia", "gramos": 50, "precio": 80, "categoria": "General" },
     { "id": 25, "nombre": "Chocolate-Barra", "gramos": 100, "precio": 140, "categoria": "General" },
     { "id": 26, "nombre": "Chocolate-Barra (st moritz)", "gramos": 50, "precio": 90, "categoria": "General" },
+    { "id": 115, "nombre": "Chocolate-Barra (st moritz)", "gramos": 100, "precio": 180, "categoria": "General" },
     { "id": 27, "nombre": "Chocolate-Taza", "gramos": 100, "precio": 340, "categoria": "General" },
     { "id": 28, "nombre": "Clavitos-Dulce", "gramos": 20, "precio": 110, "categoria": "General" },
     { "id": 29, "nombre": "Cilantro-Semillas.", "gramos": 30, "precio": 50, "categoria": "General" },
@@ -114,6 +115,8 @@
     { "id": 111, "nombre": "Turrón", "gramos": 1, "precio": 60, "categoria": "General" },
     { "id": 112, "nombre": "Vainilla Favorit-Mas", "gramos": 1, "precio": 160, "categoria": "General" },
     { "id": 113, "nombre": "Valeriana", "gramos": 10, "precio": 55, "categoria": "General" },
-    { "id": 114, "nombre": "Ajonjolí", "gramos": 45, "precio": 70, "categoria": "General" }
+    { "id": 114, "nombre": "Ajonjolí", "gramos": 45, "precio": 70, "categoria": "General" },
+    { "id": 115, "nombre": "Leche Condensada. Flower", "gramos": 250, "precio": 250, "categoria": "General" },
+    { "id": 116, "nombre": "Mani Japonés Surtido", "gramos": 50, "precio": 70, "categoria": "General" }
   ]
 }
