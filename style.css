@@ -76,6 +76,7 @@ button i, .minus-button i, .plus-button i {
     flex: 1;
     overflow-y: auto;
     max-height: calc(100vh - 200px);
+    padding-bottom: 80px; /* Espacio para el área de totales y evitar solapamiento */
 }
 
 #cart-sidebar .p-4.border-t {
@@ -137,7 +138,7 @@ header {
 
 .plus-button {
     background: #22c55e;
-    color: #fff;
+    color: #22c55e;
     border: none;
     border-radius: 50%;
     width: 32px;
@@ -155,7 +156,7 @@ header {
 }
 .minus-button {
     background: #ef4444;
-    color: #fff;
+    color: #ef4444;
     border: none;
     border-radius: 50%;
     width: 32px;
@@ -205,7 +206,7 @@ header {
     border-bottom: 1.5px solid #e5e7eb;
 }
 #cart-sidebar h2 {
-    color: #2563eb;
+    color: #374151;
 }
 #close-cart {
     background: #f3f4f6;
