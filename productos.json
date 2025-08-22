@@ -29,7 +29,7 @@
     { "id": 26, "nombre": "Chocolate-Barra (st moritz)", "gramos": 50, "precio": 90, "categoria": "General" },
     { "id": 115, "nombre": "Chocolate-Barra (st moritz)", "gramos": 100, "precio": 180, "categoria": "General" },
     { "id": 27, "nombre": "Chocolate-Taza", "gramos": 100, "precio": 340, "categoria": "General" },
-    { "id": 28, "nombre": "Clavitos-Dulce", "gramos": 20, "precio": 110, "categoria": "General" },
+    { "id": 28, "nombre": "Clavitos-Dulce", "gramos": 20, "precio": 115, "categoria": "General" },
     { "id": 29, "nombre": "Cilantro-Semillas.", "gramos": 30, "precio": 50, "categoria": "General" },
     { "id": 30, "nombre": "Ciruelas-Pasas", "gramos": 100, "precio": 135, "categoria": "General" },
     { "id": 31, "nombre": "Coco-R", "gramos": 40, "precio": 115, "categoria": "General" },
