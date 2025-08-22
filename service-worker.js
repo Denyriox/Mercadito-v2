@@ -8,8 +8,8 @@ self.addEventListener('install', function(event) {
         '/script.js',
         '/productos.json',
         '/manifest.webmanifest',
-        '/icon-192.png',
-        '/icon-512.png'
+  '/icon-192.png',
+  '/icon-512.png.png'
       ]);
     })
   );
