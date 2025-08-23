@@ -66,26 +66,30 @@ button i, .minus-button i, .plus-button i {
     scrollbar-width: none;
 }
 
-/* Asegurar que el área de total y botón de pago permanezca visible */
+/* --- Layout del Carrito --- */
 #cart-sidebar {
     display: flex;
     flex-direction: column;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden; /* Previene scroll en el contenedor principal */
 }
 
 #cart-items {
-    flex: 1;
-    overflow-y: auto;
-    max-height: calc(100vh - 200px);
-    padding-bottom: 80px; /* Espacio para el área de totales y evitar solapamiento */
+    flex: 1 1 auto; /* Ocupa todo el espacio disponible */
+    overflow-y: auto; /* Permite scroll solo en la lista de productos */
+    min-height: 0; /* Necesario para que flexbox funcione correctamente en algunos navegadores */
+    padding: 1rem; /* Añade algo de espacio interno */
 }
 
-#cart-sidebar .p-4.border-t {
-    position: sticky;
-    bottom: 0;
-    background-color: white;
-    z-index: 10;
+#cart-totals-footer {
+    flex-shrink: 0; /* Evita que el footer se encoja */
     border-top: 1.5px solid #e5e7eb;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 -2px 12px 0 rgba(0,0,0,0.05);
 }
+
+/* --- Fin Layout del Carrito --- */
 
 /* --- MODERN UI IMPROVEMENTS --- */
 
