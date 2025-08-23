@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!reminderShown) {
                     showPaymentReminder();
                 }
-            }, 5000);
+            }, 30000);
         }
     }
 
