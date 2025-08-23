@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="mx-2 font-bold whitespace-nowrap">Bs. ${product.precio.toFixed(2)}</span>
                 <div class="flex items-center space-x-1">
-                    <button class="minus-button bg-red-500 hover:bg-red-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${product.id}" aria-label="Restar">
-                        <i class="bi bi-dash-lg text-lg"></i>
+                    <button class="minus-button bg-red-500 hover:bg-red-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center shadow-md focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${product.id}" aria-label="Restar">
+                        <i class="bi bi-dash-lg" style="font-size:1.5rem;line-height:1;display:flex;align-items:center;justify-content:center;margin:auto;"></i>
                     </button>
                     <span class="mx-1 w-8 text-center quantity">${quantity}</span>
-                    <button class="plus-button bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-green-400" data-id="${product.id}" aria-label="Sumar">
-                        <i class="bi bi-plus-lg text-lg"></i>
+                    <button class="plus-button bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center shadow-md focus:outline-none focus:ring-2 focus:ring-green-400" data-id="${product.id}" aria-label="Sumar">
+                        <i class="bi bi-plus-lg" style="font-size:1.5rem;line-height:1;display:flex;align-items:center;justify-content:center;margin:auto;"></i>
                     </button>
                 </div>
             `;
@@ -205,12 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="mx-2 font-bold whitespace-nowrap">Bs. ${(product.precio * quantity).toFixed(2)}</span>
                 <div class="flex items-center space-x-1">
-                    <button class="restar bg-red-500 hover:bg-red-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${product.id}" aria-label="Restar">
-                        <i class="bi bi-dash-lg text-lg"></i>
+                    <button class="restar bg-red-500 hover:bg-red-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center shadow-md focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${product.id}" aria-label="Restar">
+                        <i class="bi bi-dash-lg" style="font-size:1.5rem;line-height:1;display:flex;align-items:center;justify-content:center;margin:auto;"></i>
                     </button>
                     <span class="mx-1">${quantity}</span>
-                    <button class="sumar bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-green-400" data-id="${product.id}" aria-label="Sumar">
-                        <i class="bi bi-plus-lg text-lg"></i>
+                    <button class="sumar bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center shadow-md focus:outline-none focus:ring-2 focus:ring-green-400" data-id="${product.id}" aria-label="Sumar">
+                        <i class="bi bi-plus-lg" style="font-size:1.5rem;line-height:1;display:flex;align-items:center;justify-content:center;margin:auto;"></i>
                     </button>
                 </div>
             `;
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="absolute inset-0 bg-gray-900 opacity-60 pointer-events-auto transition-all"></div>
                         <div class="relative bg-white p-8 rounded-3xl shadow-2xl border-4 border-green-400 text-center max-w-xs z-10 flex flex-col items-center animate-fade-in">
                             <div class="mb-4 text-2xl font-extrabold text-green-700 flex items-center gap-2">
-                                <i class='bi bi-clock-history text-green-500 text-2xl'></i>
+                                <i class='bi bi-clock-history text-green-500' style="font-size:2rem;line-height:1;display:flex;align-items:center;justify-content:center;"></i>
                                 ¡Recuerda procesar el pago!
                             </div>
                             <button id="close-reminder" class="w-full bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full py-3 text-lg font-semibold shadow-md flex items-center justify-center gap-2 mt-4">
