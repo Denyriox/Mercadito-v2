@@ -63,9 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="mx-2 font-bold whitespace-nowrap">Bs. ${product.precio.toFixed(2)}</span>
                 <div class="flex items-center space-x-1">
-                    <button class="minus-button bg-gray-200 px-2 py-1 rounded" data-id="${product.id}">-</button>
+                    <button class="minus-button bg-red-500 hover:bg-red-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${product.id}" aria-label="Restar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
+                    </button>
                     <span class="mx-1 w-8 text-center quantity">${quantity}</span>
-                    <button class="plus-button bg-gray-200 px-2 py-1 rounded" data-id="${product.id}">+</button>
+                    <button class="plus-button bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-green-400" data-id="${product.id}" aria-label="Sumar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
                 </div>
             `;
             return card;
@@ -81,11 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.elements.resetSearch.classList.add('hidden');
             });
             this.elements.productList.addEventListener('click', (e) => {
-                if (e.target.classList.contains('plus-button')) {
-                    this.updateCart(e.target.dataset.id, 1);
+                const plusBtn = e.target.closest('.plus-button');
+                const minusBtn = e.target.closest('.minus-button');
+                if (plusBtn) {
+                    this.updateCart(plusBtn.dataset.id, 1);
                 }
-                if (e.target.classList.contains('minus-button')) {
-                    this.updateCart(e.target.dataset.id, -1);
+                if (minusBtn) {
+                    this.updateCart(minusBtn.dataset.id, -1);
                 }
             });
             this.elements.cartButton.addEventListener('click', () => this.toggleCart(true));
@@ -199,9 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="mx-2 font-bold whitespace-nowrap">Bs. ${(product.precio * quantity).toFixed(2)}</span>
                 <div class="flex items-center space-x-1">
-                    <button class="restar bg-gray-200 px-2 py-1 rounded" data-id="${product.id}">-</button>
+                    <button class="restar bg-red-500 hover:bg-red-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-red-400" data-id="${product.id}" aria-label="Restar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
+                    </button>
                     <span class="mx-1">${quantity}</span>
-                    <button class="sumar bg-gray-200 px-2 py-1 rounded" data-id="${product.id}">+</button>
+                    <button class="sumar bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full p-0 w-8 h-8 flex items-center justify-center text-lg font-bold shadow-md focus:outline-none focus:ring-2 focus:ring-green-400" data-id="${product.id}" aria-label="Sumar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    </button>
                 </div>
             `;
             return item;
@@ -240,5 +250,87 @@ document.addEventListener('DOMContentLoaded', () => {
                 .trim();
         }
     };
+    // --- Inactividad y recordatorio de pago ---
+    let inactivityTimeout;
+    let reminderShown = false;
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimeout);
+        if (Object.values(app.cart).reduce((a, b) => a + b, 0) > 0) {
+            inactivityTimeout = setTimeout(() => {
+                if (!reminderShown) {
+                    showPaymentReminder();
+                }
+            }, 5000);
+        }
+    }
+
+    function showPaymentReminder() {
+        reminderShown = true;
+        let reminder = document.getElementById('payment-reminder');
+        if (!reminder) {
+            reminder = document.createElement('div');
+            reminder.id = 'payment-reminder';
+            reminder.innerHTML = `
+                    <div class="fixed inset-0 z-50 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gray-900 opacity-60 pointer-events-auto transition-all"></div>
+                        <div class="relative bg-white p-8 rounded-3xl shadow-2xl border-4 border-green-400 text-center max-w-xs z-10 flex flex-col items-center animate-fade-in">
+                            <div class="mb-4 text-2xl font-extrabold text-green-700 flex items-center gap-2">
+                                <svg xmlns='http://www.w3.org/2000/svg' class='inline w-7 h-7 text-green-500' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>
+                                ¡Recuerda procesar el pago!
+                            </div>
+                            <button id="close-reminder" class="w-full bg-green-500 hover:bg-green-600 transition-colors text-white rounded-full py-3 text-lg font-semibold shadow-md flex items-center justify-center gap-2 mt-4">
+                                Cerrar
+                            </button>
+                        </div>
+                    </div>
+                    <style>
+                    @keyframes fade-in { from { opacity: 0; transform: scale(0.95);} to { opacity: 1; transform: scale(1);} }
+                    .animate-fade-in { animation: fade-in 0.3s ease; }
+                    </style>
+            `;
+            document.body.appendChild(reminder);
+            document.getElementById('close-reminder').onclick = () => {
+                reminder.remove();
+                reminderShown = false;
+                resetInactivityTimer();
+            };
+        }
+    }
+
+    // Detectar actividad del usuario
+    ['mousemove', 'keydown', 'mousedown', 'touchstart'].forEach(evt => {
+        document.addEventListener(evt, resetInactivityTimer, true);
+    });
+
+    // Reiniciar temporizador cuando cambia el carrito
+    const origUpdateCart = app.updateCart.bind(app);
+    app.updateCart = function(...args) {
+        origUpdateCart(...args);
+        resetInactivityTimer();
+    };
+    const origRemoveFromCart = app.removeFromCart.bind(app);
+    app.removeFromCart = function(...args) {
+        origRemoveFromCart(...args);
+        resetInactivityTimer();
+    };
+    // También al cargar el carrito
+    const origLoadCart = app.loadCart.bind(app);
+    app.loadCart = function(...args) {
+        origLoadCart(...args);
+        resetInactivityTimer();
+    };
+
+    // Al hacer checkout, ocultar recordatorio
+    const origCheckout = app.checkout.bind(app);
+    app.checkout = function(...args) {
+        origCheckout(...args);
+        let reminder = document.getElementById('payment-reminder');
+        if (reminder) reminder.remove();
+        reminderShown = false;
+        resetInactivityTimer();
+    };
+
     app.init();
+    // Iniciar temporizador si hay productos en el carrito al cargar
+    resetInactivityTimer();
 });
