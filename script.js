@@ -122,28 +122,38 @@ document.addEventListener('DOMContentLoaded', () => {
             this.updateCartView();
         },
         updateCartView() {
+
             this.elements.cartItems.innerHTML = '';
             let totalItems = 0;
             let totalBs = 0;
             let productCount = 0;
 
-            Object.keys(this.cart).forEach(id => {
-                const product = this.products.find(p => p.id == id);
-                if (product) {
-                    const quantity = this.cart[id];
-                    totalItems += quantity;
-                    totalBs += product.precio * quantity;
-                    productCount++;
-                    const cartItem = this.createCartItem(product, quantity);
-                    this.elements.cartItems.appendChild(cartItem);
-                }
+            // Obtener los productos del carrito y ordenarlos alfabéticamente por nombre
+            const cartProductList = Object.keys(this.cart)
+                .map(id => {
+                    const product = this.products.find(p => p.id == id);
+                    return product ? { product, quantity: this.cart[id] } : null;
+                })
+                .filter(Boolean)
+                .sort((a, b) => a.product.nombre.localeCompare(b.product.nombre));
+
+            cartProductList.forEach(({ product, quantity }) => {
+                totalItems += quantity;
+                totalBs += product.precio * quantity;
+                productCount++;
+                const cartItem = this.createCartItem(product, quantity);
+                this.elements.cartItems.appendChild(cartItem);
             });
 
             // Actualizar contador de productos distintos
             if (this.elements.cartProductCount) {
                 this.elements.cartProductCount.textContent = productCount;
             }
-
+            // Actualizar productos totales
+            const totalProductsElem = document.getElementById('cart-total-products');
+            if (totalProductsElem) {
+                totalProductsElem.textContent = totalItems;
+            }
             this.elements.cartTotalItems.textContent = totalItems;
             this.elements.cartTotalBs.textContent = totalBs.toFixed(2);
             const totalUsd = totalBs / this.dolar;
