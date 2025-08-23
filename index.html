@@ -109,18 +109,22 @@
     </div>
 
     <!-- Barra de previsualización del carrito -->
-    <div id="cart-preview-bar" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-50 flex items-center justify-between px-6 py-3 md:hidden">
-        <div class="flex items-center">
-            <i class="bi bi-cart3 text-xl mr-2"></i>
-            <span id="cart-preview-items" class="font-semibold">0 productos</span>
+    <div id="cart-preview-bar" class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+        <div class="cart-preview-info">
+            <div id="cart-preview-items">
+                <i class="bi bi-cart3"></i>
+                <span class="cart-preview-count">0</span>
+                <span class="cart-preview-label">productos</span>
+            </div>
+            <div id="cart-preview-total">
+                <span class="cart-preview-bs">Bs.</span>
+                <span class="cart-preview-amount">0.00</span>
+            </div>
         </div>
-        <div class="flex items-center">
-            <span class="font-bold text-lg">Bs. <span id="cart-preview-total">0.00</span></span>
-            <button id="open-cart-preview" class="ml-4 bg-blue-500 hover:bg-blue-600 transition-colors text-white rounded-full px-6 py-2 text-base font-semibold shadow-md flex items-center gap-2">
-                <i class="bi bi-arrow-right-circle text-lg"></i>
-                Ver carrito
-            </button>
-        </div>
+        <button id="open-cart-preview">
+            <i class="bi bi-arrow-right-circle"></i>
+            <span>Ver carrito</span>
+        </button>
     </div>
 
     <script src="script.js"></script>

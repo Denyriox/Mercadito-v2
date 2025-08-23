@@ -89,6 +89,91 @@ button i, .minus-button i, .plus-button i {
     box-shadow: 0 -2px 12px 0 rgba(0,0,0,0.05);
 }
 
+/*  --- CART PREVIEW BAR MODERN STYLE --- */ 
+/*  Barra de previsualización del carrito */
+
+#cart-preview-bar {
+    background: linear-gradient(90deg, #2563eb 0%, #22c55e 100%);
+    box-shadow: 0 -4px 24px 0 #2563eb22, 0 1.5px 0 0 #e5e7eb;
+    border-radius: 18px 18px 0 0;
+    border-top: 2.5px solid #e5e7eb;
+    margin: 0 auto;
+    max-width: 480px;
+    left: 0; right: 0;
+    bottom: 0;
+    animation: fadeIn 0.5s cubic-bezier(.4,1.4,.6,1) 1;
+    transition: box-shadow 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7em 1.2em;
+}
+#cart-preview-bar .bi-cart3 {
+    font-size: 1.7rem;
+    color: #fff;
+    margin-right: 0.7em;
+}
+/* Contenedor para los datos alineados verticalmente */
+.cart-preview-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 0.5em;
+}
+#cart-preview-items {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1.13rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.1em;
+}
+#cart-preview-items .cart-preview-label {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #e0e7ef;
+    margin-left: 0.3em;
+}
+#cart-preview-total {
+    font-size: 1.18rem;
+    color: #fff;
+    font-weight: 700;
+    margin-left: 2.2em;
+    margin-top: 0.1em;
+    letter-spacing: 0.5px;
+}
+#cart-preview-total .cart-preview-bs {
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: #e0e7ef;
+    margin-right: 0.3em;
+}
+#open-cart-preview {
+    background: #fff;
+    color: #2563eb;
+    border-radius: 999px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    box-shadow: 0 2px 12px 0 #2563eb33;
+    padding: 0.7em 1.7em;
+    transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+#open-cart-preview:hover {
+    background: #f0f4f8;
+    color: #22c55e;
+    box-shadow: 0 4px 24px 0 #22c55e33;
+    transform: scale(1.04);
+}
+#open-cart-preview i {
+    font-size: 1.3rem;
+    margin-right: 0.3em;
+}
+
 /* --- Fin Layout del Carrito --- */
 
 /* --- MODERN UI IMPROVEMENTS --- */

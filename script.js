@@ -185,8 +185,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Actualizar barra de previsualización
             if (this.elements.cartPreviewBar) {
-                this.elements.cartPreviewItems.textContent = `${totalItems} producto${totalItems === 1 ? '' : 's'}`;
-                this.elements.cartPreviewTotal.textContent = totalBs.toFixed(2);
+                // Cantidad de productos
+                const countElem = this.elements.cartPreviewBar.querySelector('.cart-preview-count');
+                if (countElem) countElem.textContent = totalItems;
+                // Texto productos
+                const labelElem = this.elements.cartPreviewBar.querySelector('.cart-preview-label');
+                if (labelElem) labelElem.textContent = `producto${totalItems === 1 ? '' : 's'}`;
+                // Monto en Bs
+                const amountElem = this.elements.cartPreviewBar.querySelector('.cart-preview-amount');
+                if (amountElem) amountElem.textContent = totalBs.toFixed(2);
                 // Mostrar/ocultar barra según si hay productos y si el carrito está cerrado
                 const cartOpen = !this.elements.cartSidebar.classList.contains('translate-x-full');
                 this.elements.cartPreviewBar.style.display = (!cartOpen && totalItems > 0) ? 'flex' : 'none';
