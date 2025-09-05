@@ -36,10 +36,77 @@ def read_json(path):
 
 def write_json(path, data):
     try:
-        with open(path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+        # Intentamos preservar el formato original: reescribimos solo el arreglo `productos`
+        write_json_preserve_format(path, data)
     except Exception:
-        raise
+        # Fallback: volcar con indent si algo falla
+        try:
+            with open(path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        except Exception:
+            raise
+
+
+def write_json_preserve_format(path, data):
+    """Reescribe el archivo JSON manteniendo la mayor parte del formato original.
+
+    Estrategia:
+    - Lee el archivo original como texto.
+    - Busca la clave "productos" y localiza el bloque array [ ... ].
+    - Reemplaza el contenido de ese array por una versión donde cada objeto producto
+      está en una sola línea (una línea por producto), manteniendo la sangría detectada.
+    - Si no encuentra la sección, lanza RuntimeError y el caller hará fallback.
+    """
+    text = Path(path).read_text(encoding='utf-8')
+    key = '"productos"'
+    idx = text.find(key)
+    if idx == -1:
+        raise RuntimeError('No se encontró la clave "productos" en el archivo original')
+
+    # localizar '[' que inicia el array, después de la clave
+    arr_start = text.find('[', idx)
+    if arr_start == -1:
+        raise RuntimeError('No se encontró inicio del array de productos')
+
+    # Encontrar el ']' correspondiente al array (contando niveles de corchetes)
+    i = arr_start
+    depth = 0
+    end_idx = -1
+    while i < len(text):
+        ch = text[i]
+        if ch == '[':
+            depth += 1
+        elif ch == ']':
+            depth -= 1
+            if depth == 0:
+                end_idx = i
+                break
+        i += 1
+    if end_idx == -1:
+        raise RuntimeError('No se encontró fin del array de productos')
+
+    # Determinar la sangría prefijada en la línea del '['
+    line_start = text.rfind('\n', 0, arr_start) + 1
+    prefix = text[line_start:arr_start]
+    # calcular indentación: todo lo que hay entre line_start y arr_start
+    indent = ''
+    for ch in prefix:
+        if ch in (' ', '\t'):
+            indent += ch
+        else:
+            indent = ''
+    # construir nuevo contenido del array: una línea por producto
+    productos = data.get('productos', [])
+    prod_lines = []
+    for p in productos:
+        # serializar objeto en una sola línea
+        line = json.dumps(p, ensure_ascii=False, separators=(', ', ': '))
+        prod_lines.append(f'{indent}  {line}')
+    new_array = '[\n' + ',\n'.join(prod_lines) + '\n' + indent + ']'
+
+    # reemplazar en el texto original
+    new_text = text[:arr_start] + new_array + text[end_idx+1:]
+    Path(path).write_text(new_text, encoding='utf-8')
 
 
 def parse_amount(text):
