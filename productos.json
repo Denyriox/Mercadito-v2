@@ -1,5 +1,5 @@
 {
-  "dolar": 151.76,
+  "dolar": 157.72,
   "productos": [
    {"id": 1, "nombre": "Acido Borico", "gramos": 45, "precio": 100, "categoria": "General"},
    {"id": 2, "nombre": "A-C-P", "gramos": 45, "precio": 80, "categoria": "General"},
@@ -19,7 +19,7 @@
    {"id": 16, "nombre": "Bicarbonato", "gramos": 50, "precio": 110, "categoria": "General"},
    {"id": 17, "nombre": "Bolero", "gramos": 50, "precio": 110, "categoria": "General"},
    {"id": 18, "nombre": "Cacao", "gramos": 45, "precio": 180, "categoria": "General"},
-   {"id": 19, "nombre": "Canela-Rama.", "gramos": 20, "precio": 85, "categoria": "General"},
+   {"id": 19, "nombre": "Canela-Entera (Rama).", "gramos": 20, "precio": 85, "categoria": "General"},
    {"id": 20, "nombre": "Canela-Molida.", "gramos": 30, "precio": 105, "categoria": "General"},
    {"id": 21, "nombre": "Carmencita", "gramos": 50, "precio": 80, "categoria": "General"},
    {"id": 22, "nombre": "Cebolla-Granulado.", "gramos": 45, "precio": 95, "categoria": "General"},
@@ -118,8 +118,8 @@
    {"id": 114, "nombre": "Ajonjolí", "gramos": 45, "precio": 85, "categoria": "General"},
    {"id": 115, "nombre": "Leche Condensada. Flower", "gramos": 250, "precio": 275, "categoria": "General"},
    {"id": 116, "nombre": "Mani Japonés Surtido", "gramos": 50, "precio": 85, "categoria": "General"},
-   {"id": 201, "nombre": "Kamil Casabe Mini Galleta", "gramos": 1, "precio": 310, "categoria": "General"},
+   {"id": 201, "nombre": "Kamil Casabe Mini Galleta", "gramos": 1, "precio": 320, "categoria": "General"},
    {"id": 202, "nombre": "Kamil Casabe Galleta", "gramos": 1, "precio": 120, "categoria": "General"},
-   {"id": 203, "nombre": "Kamil Besito de Coco", "gramos": 1, "precio": 85, "categoria": "General"}
+   {"id": 203, "nombre": "Kamil Besito de Coco", "gramos": 1, "precio": 80, "categoria": "General"}
  ]
 }
